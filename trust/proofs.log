@@ -1,1 +1,2 @@
 ﻿# Creamlon proofs ledger (append-only, one JSON object per line)
+{"version":"1","request_id":"588faf5d-ff5b-48e0-81a6-8e2e8fe3235d","capability_id":"echo","input_digest":"sha256:61298ca82f578a6ea7112a469db35fbd2af9cf8a9e84bff71f97f161df750c79","output_digest":"sha256:6dd3ea483216e64100f756543fc93afdebbc4cb632ccf4f058aa7f5c15bce3ea","completed_at":"2026-06-16T07:39:53.947Z","signature":"O8f3R28qGEms9keGClscSaD_0QnX4d3xC7xjb73jr-26tL5jRt9CkP1g6Ol1JGhG7iq75m6Y4FHmhQdGU42XCg"}
