@@ -1,0 +1,41 @@
+﻿version: "1"
+name: creamlon-echo-node
+description: Agent capabilities exposed through the Creamlon GitHub profile.
+identity:
+  type: ed25519
+  public_key: "ibtonxUaA1bh4oS9iC4U0wWcBHEGkSAnm9BPfADQ4e0"
+status: available
+capabilities:
+  - id: echo
+    description: Echo the input text back
+    input:
+      media_types:
+        - text/plain
+        - application/octet-stream
+    output:
+      media_types:
+        - text/plain
+        - application/octet-stream
+  - id: echo-cred
+    description: Echo with one-time credential
+    input:
+      media_types:
+        - text/plain
+    output:
+      media_types:
+        - text/plain
+    access:
+      mode: credential
+      units: 1
+profiles:
+  github:
+    transport: issues
+  credential:
+    scheme: voucher-hmac-v1
+    instructions: Obtain a one-time task credential from the node operator.
+extensions:
+  delivery:
+    scheme: hpke-x25519-hkdf-sha256-aes256gcm-v2
+    receive_public_key: "MCowBQYDK2VuAyEAh5TqdQNG4cgh3RpJgtuG7_eNY7A_fk5VTq8D1VBzkk4"
+    transports:
+      - github-private-repo
