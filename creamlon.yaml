@@ -1,4 +1,4 @@
-﻿version: "1"
+version: "1"
 name: creamlon-echo-node
 description: Agent capabilities exposed through the Creamlon GitHub profile.
 identity:
@@ -27,6 +27,28 @@ capabilities:
     access:
       mode: credential
       units: 1
+  - id: x402-echo
+    description: Echo with an x402-issued one-time credential
+    input:
+      media_types:
+        - text/plain
+    output:
+      media_types:
+        - text/plain
+    access:
+      mode: credential
+      units: 1
+  - id: x402-other
+    description: Negative-test capability for x402 credential binding
+    input:
+      media_types:
+        - text/plain
+    output:
+      media_types:
+        - text/plain
+    access:
+      mode: credential
+      units: 1
 profiles:
   github:
     transport: issues
@@ -34,6 +56,17 @@ profiles:
     scheme: voucher-hmac-v1
     instructions: Obtain a one-time task credential from the node operator.
 extensions:
+  payment:
+    pattern: payment-bridge-v1
+    instructions: "Pay with x402 to receive a one-time Creamlon credential."
+    providers:
+      - id: x402
+        resource_url: http://localhost:4020/buy/x402-echo
+        network: base
+        asset: USDC
+        price: "0.50"
+        pay_to: "0x1111111111111111111111111111111111111111"
+        facilitator: http://localhost:4021
   delivery:
     scheme: hpke-x25519-hkdf-sha256-aes256gcm-v2
     receive_public_key: "MCowBQYDK2VuAyEAh5TqdQNG4cgh3RpJgtuG7_eNY7A_fk5VTq8D1VBzkk4"
